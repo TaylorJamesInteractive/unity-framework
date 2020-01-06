@@ -1,0 +1,22 @@
+{
+  "name": "com.taylorjames",
+  "version": "1.0.0",
+  "displayName": "TJ Unity Framework",
+  "description": "TJ Unity Framework \nCollection of helpers to speed up the daily workflow",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "keywords": [
+    "unity",
+    "taylorjames",
+    "utils"
+  ],
+  "author": {
+    "name": "Pedro Garlaschi",
+    "email": "pedro.garlaschi@taylorjames.com",
+    "url": "http://www.taylorjames.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://pedrotj@bitbucket.org/taylorjames/tj-unityframework.git"
+  }
+}
