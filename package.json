@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "displayName": "TJ Unity Framework",
   "description": "TJ Unity Framework \nCollection of helpers to speed up the daily workflow",
-  "unity": "2019.2.16f1",
+  "unity": "2019.2",
   "unityRelease": "0b5",
   "keywords": [
     "unity",
