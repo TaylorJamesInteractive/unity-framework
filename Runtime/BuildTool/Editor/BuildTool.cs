@@ -30,7 +30,7 @@ public class BuildTool : MonoBehaviour
     {
         get
         {
-            string path = Application.dataPath + "/TJ/Build/BuildSettings.asset";
+            string path = Application.dataPath + "/TJ/BuildTool/BuildSettings.asset";
 
 
             return path;
@@ -42,7 +42,7 @@ public class BuildTool : MonoBehaviour
     {
         get
         {
-            string path = RootFolder + "Build";
+            string path = RootFolder + "BuildTool";
 
 
             return path;
@@ -69,7 +69,7 @@ public class BuildTool : MonoBehaviour
     {
         get
         {
-            return (BuildSettingsAsset)AssetDatabase.LoadAssetAtPath("Assets/TJ/Build/BuildSettings.asset", typeof(BuildSettingsAsset));
+            return (BuildSettingsAsset)AssetDatabase.LoadAssetAtPath("Assets/TJ/BuildTool/BuildSettings.asset", typeof(BuildSettingsAsset));
         }
     }
 
@@ -89,18 +89,18 @@ public class BuildTool : MonoBehaviour
 
         asset.targets = new BuildSettingsAsset.Target[1] { new BuildSettingsAsset.Target()};
 
-        string path = Application.dataPath + "/TJ/Build";
+        string path = Application.dataPath + "/TJ/BuildTool";
 
         CreateDirectory(path);
 
         if (File.Exists(SettingsPath))
         {
-            bool value = EditorUtility.DisplayDialog("Build Wardning", "You already have a Build Settings file. Are you sure you want to replave it?", "Yes", "No");
+            bool value = EditorUtility.DisplayDialog("Build Warning", "You already have a Build Settings file. Are you sure you want to replave it?", "Yes", "No");
             if (!value) return;
         }
 
 
-        AssetDatabase.CreateAsset(asset, "Assets/TJ/Build/BuildSettings.asset");
+        AssetDatabase.CreateAsset(asset, "Assets/TJ/BuildTool/BuildSettings.asset");
         AssetDatabase.SaveAssets();
 
         EditorUtility.FocusProjectWindow();
@@ -126,12 +126,8 @@ public class BuildTool : MonoBehaviour
 
         Process.Start(BuildPath);
 
-
         EditorUserBuildSettings.SwitchActiveBuildTarget(BuildSettings.targets[0].group, BuildSettings.targets[0].target);
     }
-
-
-   
 
     private bool CheckIfBuildIsReady()
     {

@@ -35,7 +35,6 @@ namespace com.tj.Events
                 return;
 
             Listeners[typeof(T)].Remove(listener);
-
         }
 
         public static void DispatchEvent(T evt)
