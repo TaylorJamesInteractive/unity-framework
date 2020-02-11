@@ -26,7 +26,7 @@ public class Analytics : MonoBehaviour
     
     }
 
-    public static void Event(string name , string param = "", bool save = false)
+    public static void Event(string name , string param = "")
     {
         string str = string.Format("{0},{1},{2}", name, param, System.DateTime.Now.ToString());
             

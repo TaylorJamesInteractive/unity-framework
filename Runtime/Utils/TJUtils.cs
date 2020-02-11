@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class Utils : MonoBehaviour
+public class TJUtils : MonoBehaviour
 {
 
     /// <summary>
