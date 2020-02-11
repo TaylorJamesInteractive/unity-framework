@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class TJUtils : MonoBehaviour
+public class TJUtils
 {
 
     /// <summary>
@@ -27,16 +27,20 @@ public class TJUtils : MonoBehaviour
                 continue;
 
 
-            Destroy(t.gameObject);
+            GameObject.Destroy(t.gameObject);
         }
     }
-
-
-
 
     public static T Find<T>(string name) where T : Component
     {
         return GameObject.Find(name).GetComponent<T>();
+    }
+
+    public static T Instantiate<T>(string name = "") where T : Component
+    {
+        GameObject go = new GameObject(name == "" ? typeof(T).ToString() : name);
+
+        return go.AddComponent<T>();
     }
 
 }
