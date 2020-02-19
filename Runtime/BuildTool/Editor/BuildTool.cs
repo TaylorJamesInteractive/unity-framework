@@ -42,7 +42,7 @@ public class BuildTool : MonoBehaviour
     {
         get
         {
-            string path = RootFolder + "BuildTool";
+            string path = RootFolder + "Build";
 
 
             return path;
@@ -81,7 +81,6 @@ public class BuildTool : MonoBehaviour
     }
 
 
-    // Add Example1 into a new menu list
     [MenuItem("TJ/Build/Create Build Asset", false, 100)]
     public static void CreateBuildAsset()
     {
@@ -129,28 +128,6 @@ public class BuildTool : MonoBehaviour
         EditorUserBuildSettings.SwitchActiveBuildTarget(BuildSettings.targets[0].group, BuildSettings.targets[0].target);
     }
 
-    private bool CheckIfBuildIsReady()
-    {
-
-        CreateDirectory(BuildPath);
-        ChangeProjectSettings(BuildSettings);
-
-        if (!BuildSettings)
-        {
-            UnityEngine.Debug.LogWarning("Please Create a Build Settings File");
-            return false;
-        }
-
-        if (BuildSettings.scenes.Length <= 0)
-        {
-            UnityEngine.Debug.LogWarning("Make sure you have at least one scene in you Build Settings");
-            return false;
-        }
-
-        return true;
-    }
-   
-
    
     private static void CreateFileForPlatform(BuildTarget t)
     {
@@ -184,8 +161,6 @@ public class BuildTool : MonoBehaviour
 
         if (!Directory.Exists(path))
             Directory.CreateDirectory(path);
-            
-        
     }
 
 #endif
