@@ -28,6 +28,7 @@ namespace com.tj.Audio
             set
             {
                 volume = value;
+                VolumeTo = value;
                 if (!AudioManager.Mute)
                     source.volume = volume;
             }
@@ -104,7 +105,9 @@ namespace com.tj.Audio
             if (source.time >= Clip.length && IsPlaying)
                 AudioCompleted();
 
-            Volume += (VolumeTo - Volume) * 0.1f;
+            float d = (VolumeTo - Volume);
+            if (Mathf.Abs(d) > 0.001)
+                Volume += d * 0.1f;
         }
 
 
