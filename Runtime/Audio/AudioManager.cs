@@ -125,12 +125,11 @@ namespace com.tj.Audio
         {
             get
             {
-
-                GameObject go = new GameObject("AudioController");
-                DontDestroyOnLoad(go);
-
                 if (instance)
                     return instance;
+
+                GameObject go = new GameObject("AudioManager");
+                DontDestroyOnLoad(go);
 
                 instance = go.AddComponent<AudioManager>();
                 audioContainers = new List<AudioContainer>();
