@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace com.tj.Audio
 {
@@ -28,7 +29,6 @@ namespace com.tj.Audio
             set
             {
                 volume = value;
-                VolumeTo = value;
                 if (!AudioManager.Mute)
                     source.volume = volume;
             }
@@ -45,8 +45,6 @@ namespace com.tj.Audio
             get;
             private set;
         }
-
-        private float VolumeTo;
         public AudioType Type
         {
             private set;
@@ -89,9 +87,9 @@ namespace com.tj.Audio
             source.Stop();
         }
 
-        public void FadeVolume(float val)
+        public void FadeVolume(float val , float time , Ease ease = Ease.OutQuad)
         {
-            VolumeTo = val;
+            DOTween.To(() => Volume, x => Volume = x, val, time).SetEase(ease);
         }
 
         public void Kill()
@@ -104,10 +102,6 @@ namespace com.tj.Audio
         {
             if (source.time >= Clip.length && IsPlaying)
                 AudioCompleted();
-
-            float d = (VolumeTo - Volume);
-            if (Mathf.Abs(d) > 0.001)
-                Volume += d * 0.1f;
         }
 
 
