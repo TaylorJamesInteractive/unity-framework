@@ -39,6 +39,9 @@ namespace com.tj.Events
 
         public static void DispatchEvent(T evt)
         {
+            if (!Listeners.ContainsKey(typeof(T)))
+                return;
+
             for (int i = 0; i < Listeners[typeof(T)].Count;i++)
             {
                 OnEventHandlerDelegate listener = Listeners[typeof(T)][i];
