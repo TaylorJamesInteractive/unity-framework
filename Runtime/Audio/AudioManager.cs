@@ -56,11 +56,17 @@ namespace com.tj.Audio
             Clip = clip;
             Type = type;
 
-            transform.SetParent(t);
-            transform.localPosition = Vector3.zero;
-
             source = gameObject.AddComponent<AudioSource>();
             source.clip = clip;
+
+            if (t == null)
+            {
+                transform.SetParent(t);
+                transform.localPosition = Vector3.zero;
+            }
+            else
+                transform.position = Vector3.zero;
+
             if (Type == AudioType.ambient)
                 source.loop = true;
         }
@@ -70,8 +76,9 @@ namespace com.tj.Audio
             source.volume = value ? 0 : Volume;
         }
 
-        public void StartAudio()
+        public void StartAudio(float volume = 1)
         {
+            Volume = volume;
             source.Play();
             IsPlaying = true;
         }
@@ -154,19 +161,18 @@ namespace com.tj.Audio
             return PlayEffect(clip);
         }
 
-        public AudioContainer PlayEffect(AudioClip clip, Transform t)
+        public AudioContainer PlayEffect(AudioClip clip, Transform t , float volume = 1)
         {
             return CreateAudioContainer(clip, t, AudioContainer.AudioType.effect);
         }
 
         public AudioContainer PlayAmbient(AudioClip clip)
         {
-            return PlayEffect(clip);
+            return PlayAmbient(clip);
         }
 
-        public AudioContainer PlayAmbient(AudioClip clip, Transform t)
+        public AudioContainer PlayAmbient(AudioClip clip, Transform t, float volume = 1)
         {
-           
             return CreateAudioContainer(clip , t , AudioContainer.AudioType.ambient);
         }
 
