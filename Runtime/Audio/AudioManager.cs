@@ -118,6 +118,11 @@ namespace com.tj.Audio
             OnAudioComplete?.Invoke(this);
         }
 
+        public void Seek(float time)
+        {
+            source.time = time;
+        }
+
     }
     public class AudioManager : MonoBehaviour
     {
