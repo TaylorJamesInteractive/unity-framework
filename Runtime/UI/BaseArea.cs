@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace com.taylorjames.UI
+namespace com.tj.UI
 {
 
 	public abstract class BaseArea : MonoBehaviour

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace com.taylorjames.UI
+namespace com.tj.UI
 {
 	public class UINavigation : MonoBehaviour
 	{
