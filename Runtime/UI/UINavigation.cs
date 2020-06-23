@@ -114,10 +114,12 @@ namespace com.tj.UI
 
 			CurrentArea.transform.SetParent(areaTarget.transform);
 			CurrentArea.transform.position = Vector3.zero;
-
+			
 			CurrentArea.GetComponent<Image>().rectTransform.offsetMin = new Vector2(0, 0);
 			CurrentArea.GetComponent<Image>().rectTransform.offsetMax = new Vector2(0, 0);
 			CurrentArea.OnNavigationEven += CurrentArea_OnNavigationEven;
+
+			CurrentArea.transform.localScale = Vector3.one;
 
 			CurrentArea.Open();
 			//});
