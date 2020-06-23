@@ -28,6 +28,9 @@ namespace com.tj.UI
 
 		public virtual void Init(ArrayList param)
 		{
+			startPositions = new Dictionary<Transform, Vector3>();
+			startRotations = new Dictionary<Transform, Vector3>();
+
 			Transform[] arr = GetComponentsInChildren<Transform>();
             foreach(Transform t in arr)
             {
