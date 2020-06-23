@@ -163,7 +163,7 @@ namespace com.tj.Audio
 
         public AudioContainer PlayEffect(AudioClip clip)
         {
-            return PlayEffect(clip);
+            return PlayEffect(clip , Camera.main.transform);
         }
 
         public AudioContainer PlayEffect(AudioClip clip, Transform t , float volume = 1)
@@ -173,7 +173,7 @@ namespace com.tj.Audio
 
         public AudioContainer PlayAmbient(AudioClip clip)
         {
-            return PlayAmbient(clip);
+            return PlayAmbient(clip, Camera.main.transform);
         }
 
         public AudioContainer PlayAmbient(AudioClip clip, Transform t, float volume = 1)
