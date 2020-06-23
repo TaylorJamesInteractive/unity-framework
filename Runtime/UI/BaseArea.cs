@@ -22,9 +22,18 @@ namespace com.tj.UI
 
 		}
 
+		protected Dictionary<Transform, Vector3> startPositions;
+		protected Dictionary<Transform, Vector3> startRotations;
+
+
 		public virtual void Init(ArrayList param)
 		{
-
+			Transform[] arr = GetComponentsInChildren<Transform>();
+            foreach(Transform t in arr)
+            {
+				startPositions.Add(t, t.localPosition);
+				startRotations.Add(t, t.localEulerAngles);
+			}
 		}
 
 		public virtual void Open()
