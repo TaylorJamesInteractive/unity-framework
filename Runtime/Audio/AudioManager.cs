@@ -51,13 +51,16 @@ namespace com.tj.Audio
             get;
         }
 
-        public void Init(AudioClip clip, AudioType type = AudioType.effect, Transform t = null)
+        public void Init(AudioClip clip, AudioType type = AudioType.effect, Transform t = null , float volume = 1)
         {
             Clip = clip;
             Type = type;
 
             source = gameObject.AddComponent<AudioSource>();
             source.clip = clip;
+            source.volume = volume;
+
+            Mute(AudioManager.Mute);
 
             if (t == null)
             {
@@ -168,7 +171,7 @@ namespace com.tj.Audio
 
         public AudioContainer PlayEffect(AudioClip clip, Transform t , float volume = 1)
         {
-            return CreateAudioContainer(clip, t, AudioContainer.AudioType.effect);
+            return CreateAudioContainer(clip, t, AudioContainer.AudioType.effect, volume);
         }
 
         public AudioContainer PlayAmbient(AudioClip clip)
@@ -178,14 +181,14 @@ namespace com.tj.Audio
 
         public AudioContainer PlayAmbient(AudioClip clip, Transform t, float volume = 1)
         {
-            return CreateAudioContainer(clip , t , AudioContainer.AudioType.ambient);
+            return CreateAudioContainer(clip, t, AudioContainer.AudioType.ambient, volume);
         }
 
-        private AudioContainer CreateAudioContainer(AudioClip clip, Transform t, AudioContainer.AudioType audioType)
+        private AudioContainer CreateAudioContainer(AudioClip clip, Transform t, AudioContainer.AudioType audioType , float volume)
         {
             AudioContainer audio = TJUtils.Instantiate<AudioContainer>(clip.name);
             audio.OnAudioComplete += Audio_OnAudioComplete;
-            audio.Init(clip, audioType, t);
+            audio.Init(clip, audioType, t , volume);
             audio.StartAudio();
             audioContainers.Add(audio);
 
